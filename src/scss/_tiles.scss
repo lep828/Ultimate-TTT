@@ -1,0 +1,13 @@
+.tile_wrapper{
+  position: relative;
+  width: 33%;
+  height: 33%;
+  float: left;
+
+  .tile{
+    position: relative;
+    width: 90%;
+    height: 90%;
+    background-color: $secondary_color
+  }
+}

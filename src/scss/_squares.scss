@@ -1,0 +1,38 @@
+.square{
+  position: relative;
+  width: 33%;
+  height: 33%;
+  float: left;
+
+  &.square0{
+    border-right: 1px solid $tertiary_color;
+    border-bottom: 1px solid $tertiary_color;
+  }
+  &.square1{
+    border-bottom: 1px solid $tertiary_color;
+  }
+  &.square2{
+    border-left: 1px solid $tertiary_color;
+    border-bottom: 1px solid $tertiary_color;
+  }
+  &.square3{
+    border-right: 1px solid $tertiary_color;
+  }
+  &.square4{
+
+  }
+  &.square5{
+    border-left: 1px solid $tertiary_color;
+  }
+  &.square6{
+    border-top: 1px solid $tertiary_color;
+    border-right: 1px solid $tertiary_color;
+  }
+  &.square7{
+    border-top: 1px solid $tertiary_color;
+  }
+  &.square8{
+    border-top: 1px solid $tertiary_color;
+    border-left: 1px solid $tertiary_color;
+  }
+}
