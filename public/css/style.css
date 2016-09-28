@@ -1,11 +1,11 @@
 #board_container {
   position: relative;
   width: 100%;
-  margin: 100px auto;
+  margin: 0 auto;
 }
 
 #board_container #board {
-  height: 400px;
+  height: 500px;
   margin: 0 auto;
 }
 
@@ -21,6 +21,8 @@
   width: 90%;
   height: 90%;
   background-color: rgba(240, 240, 240, 0.6);
+  border-radius: 3px;
+  box-shadow: inset 3px 3px 2px 0 #a2a2a2;
 }
 
 .square {

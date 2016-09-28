@@ -2,6 +2,19 @@
 
 <div id="board_container">
   <div id="board">
+    <div class="tile_wrapper" ng-repeat="tile in main.tiles track by $index">
+      <div id="tile{{tile}}" class="tile" ng-repeat="square in main.squares track by $index">
+        {{square}}
+
+        HERERERERE
+        <!-- <div id="tile{{tile}}square{{square}}" class="square square{{square}}"></div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div id="board_container">
+  <div id="board">
     <div class="tile_wrapper">
       <div id="tile0" class="tile">
         <div id="tile0square0" class="square square0"></div>
@@ -120,4 +133,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

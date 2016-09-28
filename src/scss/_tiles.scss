@@ -8,6 +8,8 @@
     position: relative;
     width: 90%;
     height: 90%;
-    background-color: $secondary_color
+    background-color: $secondary_color;
+    border-radius: 3px;
+    box-shadow: inset 3px 3px 2px 0 lighten($tertiary_color, 30%);
   }
 }
