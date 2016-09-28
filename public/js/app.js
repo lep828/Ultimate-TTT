@@ -36342,3 +36342,44 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
+(function(){
+  'use strict';
+
+  angular
+    .module("ttt", ["ui.router"])
+    .config(MainRouter);
+
+  MainRouter.$inject = ["$stateProvider", "$urlRouterProvider", "$locationProvider"];
+  function MainRouter($stateProvider, $urlRouterProvider, $locationProvider){
+    $locationProvider.html5Mode(true);
+
+    $stateProvider
+    .state("home", {
+      url: "/",
+      templateUrl: "views/statics/home.html"
+    })
+    .state("rules", {
+      url: "/rules",
+      templateUrl: "views/statics/rules.html"
+    });
+
+    $urlRouterProvider.otherwise("/");
+  }
+
+})();
+
+(function(){
+  'use strict';
+
+  angular
+    .module("ttt")
+    .controller("MainController", MainController);
+
+  function MainController(){
+    
+    /*jshint validthis: true */
+    var vm = this;
+
+  }
+
+})();

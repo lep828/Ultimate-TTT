@@ -11,7 +11,6 @@ module.exports = function(grunt) {
       all: {
         dest: {
           'js': 'src/js/_bower.js',
-          // 'css': 'src/scss/_bower.scss'
         }
       }
     },
