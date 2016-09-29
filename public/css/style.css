@@ -68,6 +68,14 @@
   border-left: 1px solid #555;
 }
 
+.x {
+  background-color: red;
+}
+
+.o {
+  background-color: blue;
+}
+
 body {
   background: #1ea;
 }
