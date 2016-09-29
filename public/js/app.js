@@ -46612,11 +46612,11 @@ return jQuery;
       // turn count
     vm.turnCounter  = 0;
       // players moves
-    vm.player1Moves = [];
-    vm.player2Moves = [];
-      // players wins
-    vm.player1Wins  = [];
-    vm.player2Wins  = [];
+    vm.player1Moves = [[],[],[],[],[],[],[],[],[]];
+    vm.player2Moves = [[],[],[],[],[],[],[],[],[]];
+      // players tiles won
+    vm.player1Tiles  = [];
+    vm.player2Tiles  = [];
 
     // Viewmodel Functions
     vm.getMove      = getMove;
@@ -46624,13 +46624,30 @@ return jQuery;
     // Functions
       // reset/build board
       // player move
-    function getMove(index, value, tile){
-      console.log(index, value, tile);
+    function getMove(tile, value){
+      console.log(tile, value);
+      var player = getPlayer();
+      // console.log(player);
+      if (player === 1){
+        vm.player1Moves[tile].push(value);
+      } else {
+        vm.player2Moves[tile].push(value);
+      }
+
+      vm.turnCounter++;
     }
       // move board (to the subsection corresponding)
       // turn counter
+    function getPlayer(){
+      if (vm.turnCounter % 2 === 0){
+        // If evens player 1's turn
+        return 1;
+      } else {
+        // If odds player 2's turn
+        return 2;
+      }
+    }
       // check win
       // check draw
-
   }
 })();
