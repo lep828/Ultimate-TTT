@@ -4,7 +4,7 @@
   <div id="board">
     <div class="tile_wrapper" ng-repeat="tile in main.tiles track by $index">
       <div id="tile{{tile}}" class="tile">
-        <div id="tile{{tile}}square{{square}}" class="square square{{square}}" ng-repeat="square in main.squares track by $index">{{square}}</div>
+        <div id="tile{{tile}}square{{square[0]}}" class="square square{{square[0]}}" ng-repeat="square in main.squares track by $index" ng-click="main.getMove(square[0], square[1], tile)">{{square[1]}}</div>
       </div>
     </div>
   </div>
