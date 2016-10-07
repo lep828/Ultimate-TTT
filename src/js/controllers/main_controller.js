@@ -66,7 +66,7 @@
     }
       // check for valid move
     function checkMove(square){
-      console.log(square, square.length);
+      // console.log(square, square.length);
         if(square.length !== 3){
           return true;
         } else {
@@ -76,11 +76,28 @@
       // move board (to the subsection corresponding)
       // check win
     function checkWin(player, tile){
-      console.log(player, tile);
+      // console.log(player, tile);
+      var total = 0;
+      var array = [];
       if (player === 'x'){
-        console.log(vm.xMoves);
+        array = vm.xMoves[tile];
       } else {
-        console.log(vm.oMoves);
+        array = vm.oMoves[tile];
+      }
+
+      for (var i = 0; i < array.length; i++){
+        total = array[i];
+        for (var j = i+1; j < array.length; j++){
+          total = array[i] + array[j];
+          for (var k = j+1; k < array.length; k++){
+            total += array[k];
+            for (var l = 0; l < vm.winConditions.length; l++){
+              if (total === vm.winConditions[l]){
+                console.log("WINNER", total);
+              }
+            }
+          }
+        }
       }
     }
       // check draw
