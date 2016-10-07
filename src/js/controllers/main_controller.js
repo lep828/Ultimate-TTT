@@ -68,11 +68,15 @@
     }
       // check for valid move
     function checkMove(square){
-      if(square.length !== 3){
-        return true;
-      } else {
+      console.log(square.value.indexOf("inactive"));
+      if (square.value.indexOf("inactive") !== -1){
         return false;
       }
+       if(square.value.indexOf("x") === -1 || square.value.indexOf("o") === -1){
+          return true;
+        } else {
+          return false;
+        }
     }
       // move board to the corresponding section
     function moveBoard(square){

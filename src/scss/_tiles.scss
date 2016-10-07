@@ -16,6 +16,10 @@
       box-shadow: 3px 3px 2px 0 lighten($tertiary_color, 30%);
     }
 
+    &.inactive{
+      box-shadow: inset 3px 3px 2px 0 lighten($tertiary_color, 30%) !important;
+    }
+
     &.x{
       background-color: lighten(red, 30%);
     }
