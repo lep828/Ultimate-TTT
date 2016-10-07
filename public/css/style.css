@@ -25,6 +25,18 @@
   box-shadow: inset 3px 3px 2px 0 #a2a2a2;
 }
 
+.tile_wrapper .tile.active {
+  box-shadow: 3px 3px 2px 0 #a2a2a2;
+}
+
+.tile_wrapper .tile.x {
+  background-color: #ff9999;
+}
+
+.tile_wrapper .tile.o {
+  background-color: #9999ff;
+}
+
 .square {
   position: relative;
   width: 33%;
@@ -77,5 +89,5 @@
 }
 
 body {
-  background: #1ea;
+  background: gold;
 }

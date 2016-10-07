@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module("ttt", ["ui.router"])
+    .module("tictactoe", ["ui.router"])
     .config(MainRouter);
 
   MainRouter.$inject = ["$stateProvider", "$urlRouterProvider", "$locationProvider"];

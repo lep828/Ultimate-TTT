@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module("ttt")
+    .module("tictactoe")
     .controller("MainController", MainController);
 
   function MainController(){
@@ -53,6 +53,7 @@
       }
       vm.turnCounter++;
       getPlayer();
+      moveBoard($event.currentTarget);
     }
       // get player
     function getPlayer(){
@@ -67,6 +68,8 @@
       // check for valid move
     function checkMove(square){
       // console.log(square, square.length);
+      console.log(square);
+
         if(square.length !== 3){
           return true;
         } else {
@@ -74,6 +77,17 @@
         }
     }
       // move board (to the subsection corresponding)
+    function moveBoard(square){
+      var tiles = document.getElementsByClassName("tile");
+      var regex = new RegExp("[0-9]");
+      var squareIndex = parseInt(regex.exec(square.classList[1]));
+
+      for (var i = 0; i < tiles.length; i++){
+        tiles[i].classList.remove("active");
+      }
+
+      tiles[squareIndex].classList.add("active");
+    }
       // check win
     function checkWin(tile){
       var total = 0;
@@ -93,6 +107,7 @@
             for (var l = 0; l < vm.winConditions.length; l++){
               if (total === vm.winConditions[l]){
                 console.log("WINNER", vm.player, total);
+                setTile(tile);
               }
             }
           }
@@ -100,6 +115,12 @@
       }
     }
       // check draw
-      // reset/build board
+      // set tile to winner
+    function setTile(tileIndex){
+      console.log("SET TILE", tileIndex, vm.player);
+      var tile = document.getElementById("tile"+tileIndex);
+      tile.classList.add(vm.player);
+    }
+    // reset/build board
   }
 })();

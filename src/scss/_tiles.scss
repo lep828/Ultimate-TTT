@@ -11,5 +11,16 @@
     background-color: $secondary_color;
     border-radius: 3px;
     box-shadow: inset 3px 3px 2px 0 lighten($tertiary_color, 30%);
+
+    &.active{
+      box-shadow: 3px 3px 2px 0 lighten($tertiary_color, 30%);
+    }
+
+    &.x{
+      background-color: lighten(red, 30%);
+    }
+    &.o{
+      background-color: lighten(blue, 30%);
+    }
   }
 }
