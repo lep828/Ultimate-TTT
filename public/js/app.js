@@ -46599,7 +46599,7 @@ return jQuery;
   function MainController(){
     var vm = this;
 
-    // Variables
+    // Global Variables
       // Tiles
     vm.tiles         = [0,1,2,3,4,5,6,7,8];
       // Squares
@@ -46609,17 +46609,18 @@ return jQuery;
                         66,93,126, // Verticals
                         83,107];   // Diagonals
       // turn count
-    vm.turnCounter  = 0;
-      // player to move
-    vm.player = "x";
+    vm.turnCounter   = 0;
+      // player to move, x starts
+    vm.player        = "x";
       // players moves
-    vm.xMoves = [[],[],[],[],[],[],[],[],[]];
-    vm.oMoves = [[],[],[],[],[],[],[],[],[]];
+    vm.xMoves        = [[],[],[],[],[],[],[],[],[]];
+    vm.oMoves        = [[],[],[],[],[],[],[],[],[]];
       // players tiles won
-    vm.xTiles  = [];
-    vm.oTiles  = [];
+    vm.xTiles        = [];
+    vm.oTiles        = [];
+
     // Viewmodel Functions
-    vm.getMove      = getMove;
+    vm.getMove       = getMove;
 
     // Functions
       // player move
@@ -46658,18 +46659,17 @@ return jQuery;
     }
       // check for valid move
     function checkMove(square){
-      // console.log(square, square.length);
-      console.log(square);
-
-        if(square.length !== 3){
-          return true;
-        } else {
-          return false;
-        }
+      if(square.length !== 3){
+        return true;
+      } else {
+        return false;
+      }
     }
-      // move board (to the subsection corresponding)
+      // move board to the corresponding section
     function moveBoard(square){
       var tiles = document.getElementsByClassName("tile");
+
+      // Regex to find the square index
       var regex = new RegExp("[0-9]");
       var squareIndex = parseInt(regex.exec(square.classList[1]));
 
@@ -46689,6 +46689,7 @@ return jQuery;
         array = vm.oMoves[tile];
       }
 
+      // Loops to add all possible combinations together to check for wins
       for (var i = 0; i < array.length; i++){
         total = array[i];
         for (var j = i+1; j < array.length; j++){
@@ -46705,13 +46706,22 @@ return jQuery;
         }
       }
     }
-      // check draw
       // set tile to winner
     function setTile(tileIndex){
       console.log("SET TILE", tileIndex, vm.player);
       var tile = document.getElementById("tile"+tileIndex);
       tile.classList.add(vm.player);
+      setSquares(tile);
     }
+      // set squares to inactive
+    function setSquares(tile){
+      console.log(tile);
+      for (var i = 0; i < vm.squares.length; i++){
+        document.getElementById(tile.id + "square" + vm.squares[i][0]).classList.add("inactive");
+      }
+    }
+
+    // check draw
     // reset/build board
   }
 })();
