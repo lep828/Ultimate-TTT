@@ -46610,49 +46610,49 @@ return jQuery;
                         83,107];   // Diagonals
       // turn count
     vm.turnCounter  = 0;
+      // player to move
+    vm.player = "x";
       // players moves
     vm.xMoves = [[],[],[],[],[],[],[],[],[]];
     vm.oMoves = [[],[],[],[],[],[],[],[],[]];
       // players tiles won
     vm.xTiles  = [];
     vm.oTiles  = [];
-
     // Viewmodel Functions
     vm.getMove      = getMove;
 
     // Functions
       // player move
     function getMove(tile, value, $event){
-      var player = getPlayer();
       var square = $event.currentTarget.classList;
-      if (player === 'x'){
+      if (vm.player === 'x'){
         vm.xMoves[tile].push(value);
         if (checkMove(square)){
-          square.add(player);
-          checkWin(player, tile);
+          square.add(vm.player);
+          checkWin(tile);
         } else {
           return false;
         }
       } else {
         vm.oMoves[tile].push(value);
         if (checkMove(square)){
-          square.add(player);
-          checkWin(player, tile);
+          square.add(vm.player);
+          checkWin(tile);
         } else {
           return false;
         }
       }
-
       vm.turnCounter++;
+      getPlayer();
     }
       // get player
     function getPlayer(){
       if (vm.turnCounter % 2 === 0){
         // If evens then x's turn
-        return 'x';
+        vm.player = 'x';
       } else {
         // If odds then o's turn
-        return 'o';
+        vm.player = 'o';
       }
     }
       // check for valid move
@@ -46666,11 +46666,10 @@ return jQuery;
     }
       // move board (to the subsection corresponding)
       // check win
-    function checkWin(player, tile){
-      // console.log(player, tile);
+    function checkWin(tile){
       var total = 0;
       var array = [];
-      if (player === 'x'){
+      if (vm.player === 'x'){
         array = vm.xMoves[tile];
       } else {
         array = vm.oMoves[tile];
@@ -46684,7 +46683,7 @@ return jQuery;
             total += array[k];
             for (var l = 0; l < vm.winConditions.length; l++){
               if (total === vm.winConditions[l]){
-                console.log("WINNER", total);
+                console.log("WINNER", vm.player, total);
               }
             }
           }
