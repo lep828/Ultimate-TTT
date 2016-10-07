@@ -46611,11 +46611,11 @@ return jQuery;
       // turn count
     vm.turnCounter  = 0;
       // players moves
-    vm.player1Moves = [[],[],[],[],[],[],[],[],[]];
-    vm.player2Moves = [[],[],[],[],[],[],[],[],[]];
+    vm.xMoves = [[],[],[],[],[],[],[],[],[]];
+    vm.oMoves = [[],[],[],[],[],[],[],[],[]];
       // players tiles won
-    vm.player1Tiles  = [];
-    vm.player2Tiles  = [];
+    vm.xTiles  = [];
+    vm.oTiles  = [];
 
     // Viewmodel Functions
     vm.getMove      = getMove;
@@ -46623,22 +46623,21 @@ return jQuery;
     // Functions
       // player move
     function getMove(tile, value, $event){
-      // console.log(tile, value);
       var player = getPlayer();
-      // console.log(player);
       var square = $event.currentTarget.classList;
-      console.log(square);
-      if (player === 1){
-        vm.player1Moves[tile].push(value);
+      if (player === 'x'){
+        vm.xMoves[tile].push(value);
         if (checkMove(square)){
-          square.add("x");
+          square.add(player);
+          checkWin(player, tile);
         } else {
           return false;
         }
       } else {
-        vm.player2Moves[tile].push(value);
+        vm.oMoves[tile].push(value);
         if (checkMove(square)){
-          square.add("o");
+          square.add(player);
+          checkWin(player, tile);
         } else {
           return false;
         }
@@ -46646,26 +46645,35 @@ return jQuery;
 
       vm.turnCounter++;
     }
-      // check for valid move
-    function checkMove(square){
-      if(square.length !== 3){
-        return true;
-      } else {
-        return false;
-      }
-    }
-      // move board (to the subsection corresponding)
       // get player
     function getPlayer(){
       if (vm.turnCounter % 2 === 0){
-        // If evens player 1's turn
-        return 1;
+        // If evens then x's turn
+        return 'x';
       } else {
-        // If odds player 2's turn
-        return 2;
+        // If odds then o's turn
+        return 'o';
       }
     }
+      // check for valid move
+    function checkMove(square){
+      console.log(square, square.length);
+        if(square.length !== 3){
+          return true;
+        } else {
+          return false;
+        }
+    }
+      // move board (to the subsection corresponding)
       // check win
+    function checkWin(player, tile){
+      console.log(player, tile);
+      if (player === 'x'){
+        console.log(vm.xMoves);
+      } else {
+        console.log(vm.oMoves);
+      }
+    }
       // check draw
       // reset/build board
   }
