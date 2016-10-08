@@ -1,0 +1,26 @@
+// Button CSS
+button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: lighten($green, 10%);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px lighten($black, 10%);
+  &:hover {
+    background-color: $green;
+  }
+
+  &:active {
+    background-color: $green;
+    box-shadow: 0 5px $black;
+    transform: translateY(4px);
+  }
+}
+
+
+

@@ -5,6 +5,7 @@
 @import "squares";
 @import "players";
 @import "rules";
+@import "buttons";
 
 // Main Css
 header {
@@ -14,7 +15,7 @@ header {
 }
 
 body {
-  background: $primary_color;
+  background: $white;
   main {
     text-align: center;
   }

@@ -1,12 +1,13 @@
 // Rules Page CSS
 #rules {
+  width: 70%;
+  margin: 0 auto;
   article {
-    width: 70%;
-    margin: 0 auto;
   }
   img {
-    position: relative;
+    display: inline-block;
     height: auto;
-    width: 40%;
+    width: 45%;
+    padding: 2%;
   }
 }

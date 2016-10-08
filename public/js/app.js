@@ -46638,7 +46638,7 @@ return jQuery;
         if (checkMove(square, tile)){
           vm.xMoves[tile].push(value);
           square.add(vm.player);
-          checkWin(tile);
+          checkTileWin(tile);
         } else {
           return false;
         }
@@ -46646,7 +46646,7 @@ return jQuery;
         if (checkMove(square, tile)){
           vm.oMoves[tile].push(value);
           square.add(vm.player);
-          checkWin(tile);
+          checkTileWin(tile);
         } else {
           return false;
         }
@@ -46658,7 +46658,7 @@ return jQuery;
 
     // get player
     function getPlayer(){
-      // If evens then x's turn else o's turn
+      // If evens then x's turn, odds then o's turn
       if (vm.turnCounter % 2 === 0){
         vm.player = 'x';
       } else {
@@ -46666,12 +46666,14 @@ return jQuery;
       }
     }
 
-    // check if move is valid
+    // Checks if move is valid
     function checkMove(square, tile){
+      // Checks if the tile is active || if the square is inactive
       if (checkTile(tile) || square.value.indexOf("inactive") !== -1){
         return false;
       }
       
+      // Checks if the square has been taken already
       if(square.value.indexOf("x") === -1 && square.value.indexOf("o") === -1){
         return true;
       } else {
@@ -46679,7 +46681,7 @@ return jQuery;
       }
     }
 
-    // move board to the corresponding section
+    // move board to the corresponding tile
     function moveBoard(square){
       var tiles = document.getElementsByClassName("tile");
 
@@ -46695,7 +46697,6 @@ return jQuery;
         tiles[squareIndex].classList.add("active");
       } else {
         // If tile has been won, allow any other tile to be clicked
-
         for (var j = 0; j < tiles.length; j++){
           tiles[j].classList.add("active");
         }
@@ -46703,8 +46704,8 @@ return jQuery;
       }
     }
 
-    // check for a win
-    function checkWin(tile){
+    // Checks for a tile win
+    function checkTileWin(tile){
       var total = 0;
       var array = [];
 
@@ -46721,6 +46722,7 @@ return jQuery;
           total = array[i] + array[j];
           for (var k = j+1; k < array.length; k++){
             total += array[k];
+
             for (var l = 0; l < vm.winConditions.length; l++){
               if (total === vm.winConditions[l]){
                 console.log("WINNER", vm.player, total);
@@ -46732,38 +46734,37 @@ return jQuery;
       }
     }
 
-    // check if tile is active
+    // Checks if the tile is active
     function checkTile(tileIndex){
       var tiles = document.getElementsByClassName("tile");
       var tile  = tiles[tileIndex].classList; 
       return tile[1] !== "active" ? true : false;
     }
 
-    // set tile to winner
+    // Sets tile to the winner
     function setTile(tileIndex){
       var tile = document.getElementById("tile"+tileIndex);
       tile.classList.add(vm.player);
       setSquares(tile);
     }
     
-    // set squares to inactive
+    // Sets won squares to inactive
     function setSquares(tile){
-      console.log("SET SQUARES", tile);
       for (var i = 0; i < vm.squares.length; i++){
         document.getElementById(tile.id + "square" + vm.squares[i][0]).classList.add("inactive");
       }
     }
 
-    // check draw
+    // Checks for a draw
 
-    // reset/build board
+    // Reset board
 
-    // display rules page
+    // Displays rules page
     function rulesPage(){
       $state.go("rules");
     }
 
-    // display home page
+    // Displays home page
     function homePage(){
       $state.go("home");
     }
