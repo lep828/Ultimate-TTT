@@ -1,19 +1,19 @@
 // Tiles CSS
 .tile_wrapper {
   position: relative;
-  width: 32%;
-  height: 32%;
+  width: 33%;
+  height: 33%;
   float: left;
 
   .tile {
     position: relative;
     height: 97%;
-    background-color: darken($secondary_color, 20%);
+    background-color: darken($grey, 20%);
     border: 3px solid $black;
     box-shadow: inset 5px 5px 4px 0 lighten($black, 30%);
 
     &.active {
-      background-color: $secondary_color;
+      background-color: $grey;
       box-shadow: 5px 5px 4px 0 lighten($black, 30%);
     }
     &.inactive {

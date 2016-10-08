@@ -7,15 +7,24 @@
 @import "rules";
 @import "buttons";
 
-// Main Css
-header {
-  h1 {
-    text-align: center;
-  }
+// Font
+@font-face {
+  font-family: 'Lato-Regular';
+  src: url("/fonts/Lato-Regular.ttf");
 }
 
+// Main Css
+
+
 body {
-  background: $white;
+  font-family: 'Lato-Regular';
+  background: white;
+
+  header {
+    h1 {
+      text-align: center;
+    }
+  }
   main {
     text-align: center;
   }
