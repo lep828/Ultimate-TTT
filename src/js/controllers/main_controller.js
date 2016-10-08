@@ -5,47 +5,55 @@
     .module("tictactoe")
     .controller("MainController", MainController);
 
-  function MainController(){
+  MainController.$inject = ["$state"];
+  function MainController($state){
+    // namespacing 'this'
     var vm = this;
 
-    // Global Variables
-      // Tiles
+    // ************************ //
+    // *** Global Variables *** //
+    // ************************ //
+
+    // Board Variables
     vm.tiles         = [0,1,2,3,4,5,6,7,8];
-      // Squares
     vm.squares       = [[0,1],[1,4],[2,9],[3,16],[4,25],[5,36],[6,49],[7,64],[8,81]];
-      // win conditions
     vm.winConditions = [14,77,194, // Horizontals
                         66,93,126, // Verticals
                         83,107];   // Diagonals
-      // turn count
+
+    // Turn counter variables
     vm.turnCounter   = 0;
-      // player to move, x starts
     vm.player        = "x";
-      // players moves
+
+    // Player Variables
     vm.xMoves        = [[],[],[],[],[],[],[],[],[]];
     vm.oMoves        = [[],[],[],[],[],[],[],[],[]];
-      // players tiles won
     vm.xTiles        = [];
     vm.oTiles        = [];
 
     // Viewmodel Functions
     vm.getMove       = getMove;
+    vm.homePage      = homePage;
+    vm.rulesPage     = rulesPage;
 
-    // Functions
-      // player move
+    // ***************** //
+    // *** Functions *** //
+    // ***************** //
+
+    // get player's move
     function getMove(tile, value, $event){
       var square = $event.currentTarget.classList;
       if (vm.player === 'x'){
-        vm.xMoves[tile].push(value);
         if (checkMove(square, tile)){
+          vm.xMoves[tile].push(value);
           square.add(vm.player);
           checkWin(tile);
         } else {
           return false;
         }
       } else {
-        vm.oMoves[tile].push(value);
         if (checkMove(square, tile)){
+          vm.oMoves[tile].push(value);
           square.add(vm.player);
           checkWin(tile);
         } else {
@@ -57,33 +65,30 @@
       moveBoard($event.currentTarget);
     }
 
-      // get player
+    // get player
     function getPlayer(){
+      // If evens then x's turn else o's turn
       if (vm.turnCounter % 2 === 0){
-        // If evens then x's turn
         vm.player = 'x';
       } else {
-        // If odds then o's turn
         vm.player = 'o';
       }
     }
 
-      // check for valid move
+    // check if move is valid
     function checkMove(square, tile){
-      console.log(checkTile(tile));
-      console.log(square.value.indexOf("inactive"));
       if (checkTile(tile) || square.value.indexOf("inactive") !== -1){
         return false;
       }
       
-      if(square.value.indexOf("x") === -1 || square.value.indexOf("o") === -1){
-          return true;
+      if(square.value.indexOf("x") === -1 && square.value.indexOf("o") === -1){
+        return true;
       } else {
-          return false;
+        return false;
       }
     }
 
-      // move board to the corresponding section
+    // move board to the corresponding section
     function moveBoard(square){
       var tiles = document.getElementsByClassName("tile");
 
@@ -98,7 +103,7 @@
       tiles[squareIndex].classList.add("active");
     }
 
-      // check win
+    // check for a win
     function checkWin(tile){
       var total = 0;
       var array = [];
@@ -126,29 +131,39 @@
       }
     }
 
-      // check tile
+    // check if tile is active
     function checkTile(tileIndex){
       var tiles = document.getElementsByClassName("tile");
       var tile  = tiles[tileIndex].classList; 
       return tile[1] !== "active" ? true : false;
     }
 
-      // set tile to winner
+    // set tile to winner
     function setTile(tileIndex){
-      console.log("SET TILE", tileIndex, vm.player);
       var tile = document.getElementById("tile"+tileIndex);
       tile.classList.add(vm.player);
       setSquares(tile);
     }
-      // set squares to inactive
+    
+    // set squares to inactive
     function setSquares(tile){
-      console.log(tile);
       for (var i = 0; i < vm.squares.length; i++){
         document.getElementById(tile.id + "square" + vm.squares[i][0]).classList.add("inactive");
       }
     }
 
     // check draw
+
     // reset/build board
+
+    // display rules page
+    function rulesPage(){
+      $state.go("rules");
+    }
+    
+    // display home page
+    function homePage(){
+      $state.go("home");
+    }
   }
 })();

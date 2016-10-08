@@ -6,32 +6,32 @@
 
 #board_container #board {
   height: 500px;
-  width: 810px;
+  width: 100%;
   margin: 0 auto;
 }
 
 .tile_wrapper {
   position: relative;
-  width: 33%;
-  height: 33%;
+  width: 32%;
+  height: 32%;
   float: left;
 }
 
 .tile_wrapper .tile {
   position: relative;
-  width: 90%;
-  height: 90%;
-  background-color: rgba(240, 240, 240, 0.6);
-  border-radius: 3px;
-  box-shadow: inset 3px 3px 2px 0 #a2a2a2;
+  height: 97%;
+  background-color: rgba(189, 189, 189, 0.6);
+  border: 3px solid #555555;
+  box-shadow: inset 5px 5px 4px 0 #a2a2a2;
 }
 
 .tile_wrapper .tile.active {
-  box-shadow: 3px 3px 2px 0 #a2a2a2;
+  background-color: rgba(240, 240, 240, 0.6);
+  box-shadow: 5px 5px 4px 0 #a2a2a2;
 }
 
 .tile_wrapper .tile.inactive {
-  box-shadow: inset 3px 3px 2px 0 #a2a2a2 !important;
+  box-shadow: inset 5px 5px 4px 0 #a2a2a2 !important;
 }
 
 .tile_wrapper .tile.x {
@@ -40,6 +40,21 @@
 
 .tile_wrapper .tile.o {
   background-color: #9999ff;
+}
+
+.tile_wrapper .tile#tile1 {
+  border-left: 0;
+  border-right: 0;
+}
+
+.tile_wrapper .tile#tile4 {
+  border-left: 0;
+  border-right: 0;
+}
+
+.tile_wrapper .tile#tile7 {
+  border-left: 0;
+  border-right: 0;
 }
 
 .square {
@@ -93,6 +108,25 @@
   background-color: blue;
 }
 
+#rules article {
+  width: 70%;
+  margin: 0 auto;
+}
+
+#rules img {
+  position: relative;
+  height: auto;
+  width: 40%;
+}
+
+header h1 {
+  text-align: center;
+}
+
 body {
-  background: gold;
+  background: #f5f5f5;
+}
+
+body main {
+  text-align: center;
 }

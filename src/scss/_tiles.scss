@@ -1,30 +1,43 @@
-.tile_wrapper{
+// Tiles CSS
+.tile_wrapper {
   position: relative;
-  width: 33%;
-  height: 33%;
+  width: 32%;
+  height: 32%;
   float: left;
 
-  .tile{
+  .tile {
     position: relative;
-    width: 90%;
-    height: 90%;
-    background-color: $secondary_color;
-    border-radius: 3px;
-    box-shadow: inset 3px 3px 2px 0 lighten($tertiary_color, 30%);
+    height: 97%;
+    background-color: darken($secondary_color, 20%);
+    border: 3px solid $black;
+    box-shadow: inset 5px 5px 4px 0 lighten($tertiary_color, 30%);
 
-    &.active{
-      box-shadow: 3px 3px 2px 0 lighten($tertiary_color, 30%);
+    &.active {
+      background-color: $secondary_color;
+      box-shadow: 5px 5px 4px 0 lighten($tertiary_color, 30%);
+    }
+    &.inactive {
+      box-shadow: inset 5px 5px 4px 0 lighten($tertiary_color, 30%) !important;
     }
 
-    &.inactive{
-      box-shadow: inset 3px 3px 2px 0 lighten($tertiary_color, 30%) !important;
-    }
-
-    &.x{
+    &.x {
       background-color: lighten(red, 30%);
     }
-    &.o{
+    &.o {
       background-color: lighten(blue, 30%);
+    }
+
+    &#tile1 {
+      border-left: 0;
+      border-right: 0;
+    }
+    &#tile4 {
+      border-left: 0;
+      border-right: 0;
+    }
+    &#tile7 {
+      border-left: 0;
+      border-right: 0;
     }
   }
 }

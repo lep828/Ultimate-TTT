@@ -4,8 +4,18 @@
 @import "tiles";
 @import "squares";
 @import "players";
+@import "rules";
 
-// Site Css
+// Main Css
+header {
+  h1 {
+    text-align: center;
+  }
+}
+
 body {
   background: $primary_color;
+  main {
+    text-align: center;
+  }
 }

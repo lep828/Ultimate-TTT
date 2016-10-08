@@ -1,1 +1,12 @@
-<h1>RULES</h1>
+<h1>The Rules</h1>
+<div id="rules">
+  <article>
+    Like the original Tic-Tac-Toe, Player 1 is represented by X and Player 2 is represented by O. To start the game, Player 1 places an X on any one of the 81 empty squares, and then players alternate turns. However, after the initial move, players must play the board that mirrors the square from the previous player. If the next move is to a board that has already been won, then that player may choose an open square on any board for that turn. You win boards as usual, but you win the game when you win three boards together (across rows, columns or diagnols). 
+
+    <br><br>
+    For instance, if the first move by X is the first image, player O is forced to play in the top-right corner as shown in the second image.
+  </article>
+  <img src="/images/first-move.jpg">
+  <img src="/images/second-move.jpg">
+</div>
+<button ng-click="main.homePage()">Play</button>
