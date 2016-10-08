@@ -46628,7 +46628,7 @@ return jQuery;
       var square = $event.currentTarget.classList;
       if (vm.player === 'x'){
         vm.xMoves[tile].push(value);
-        if (checkMove(square)){
+        if (checkMove(square, tile)){
           square.add(vm.player);
           checkWin(tile);
         } else {
@@ -46636,7 +46636,7 @@ return jQuery;
         }
       } else {
         vm.oMoves[tile].push(value);
-        if (checkMove(square)){
+        if (checkMove(square, tile)){
           square.add(vm.player);
           checkWin(tile);
         } else {
@@ -46647,6 +46647,7 @@ return jQuery;
       getPlayer();
       moveBoard($event.currentTarget);
     }
+
       // get player
     function getPlayer(){
       if (vm.turnCounter % 2 === 0){
@@ -46657,18 +46658,22 @@ return jQuery;
         vm.player = 'o';
       }
     }
+
       // check for valid move
-    function checkMove(square){
+    function checkMove(square, tile){
+      console.log(checkTile(tile));
       console.log(square.value.indexOf("inactive"));
-      if (square.value.indexOf("inactive") !== -1){
+      if (checkTile(tile) || square.value.indexOf("inactive") !== -1){
         return false;
       }
-       if(square.value.indexOf("x") === -1 || square.value.indexOf("o") === -1){
+      
+      if(square.value.indexOf("x") === -1 || square.value.indexOf("o") === -1){
           return true;
-        } else {
+      } else {
           return false;
-        }
+      }
     }
+
       // move board to the corresponding section
     function moveBoard(square){
       var tiles = document.getElementsByClassName("tile");
@@ -46683,6 +46688,7 @@ return jQuery;
 
       tiles[squareIndex].classList.add("active");
     }
+
       // check win
     function checkWin(tile){
       var total = 0;
@@ -46710,6 +46716,14 @@ return jQuery;
         }
       }
     }
+
+      // check tile
+    function checkTile(tileIndex){
+      var tiles = document.getElementsByClassName("tile");
+      var tile  = tiles[tileIndex].classList; 
+      return tile[1] !== "active" ? true : false;
+    }
+
       // set tile to winner
     function setTile(tileIndex){
       console.log("SET TILE", tileIndex, vm.player);
