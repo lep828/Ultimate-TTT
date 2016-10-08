@@ -46687,17 +46687,27 @@ return jQuery;
       var regex = new RegExp("[0-9]");
       var squareIndex = parseInt(regex.exec(square.classList[1]));
 
-      for (var i = 0; i < tiles.length; i++){
-        tiles[i].classList.remove("active");
-      }
+      // Checks if the corresponding tile has been won
+      if (tiles[squareIndex].classList[1] !== "x" && tiles[squareIndex].classList[1] !== "o"){
+        for (var i = 0; i < tiles.length; i++){
+          tiles[i].classList.remove("active");
+        }
+        tiles[squareIndex].classList.add("active");
+      } else {
+        // If tile has been won, allow any other tile to be clicked
 
-      tiles[squareIndex].classList.add("active");
+        for (var j = 0; j < tiles.length; j++){
+          tiles[j].classList.add("active");
+        }
+        tiles[squareIndex].classList.remove("active");
+      }
     }
 
     // check for a win
     function checkWin(tile){
       var total = 0;
       var array = [];
+
       if (vm.player === 'x'){
         array = vm.xMoves[tile];
       } else {
@@ -46738,6 +46748,7 @@ return jQuery;
     
     // set squares to inactive
     function setSquares(tile){
+      console.log("SET SQUARES", tile);
       for (var i = 0; i < vm.squares.length; i++){
         document.getElementById(tile.id + "square" + vm.squares[i][0]).classList.add("inactive");
       }
@@ -46751,7 +46762,7 @@ return jQuery;
     function rulesPage(){
       $state.go("rules");
     }
-    
+
     // display home page
     function homePage(){
       $state.go("home");
