@@ -46605,13 +46605,13 @@ return jQuery;
     // *** Global Variables *** //
     // ************************ //
 
-    // Board Variables
+    // Game Variables
+    vm.ongoingGame   = true;
     vm.tiles         = [0,1,2,3,4,5,6,7,8];
     vm.squares       = [[0,1],[1,4],[2,9],[3,16],[4,25],[5,36],[6,49],[7,64],[8,81]];
     vm.winConditions = [14,77,194, // Horizontals
                         66,93,126, // Verticals
                         83,107];   // Diagonals
-    vm.playing       = true;
 
     // Turn counter variables
     vm.turnCounter   = 0;
@@ -46625,7 +46625,10 @@ return jQuery;
     vm.xWins         = [];
     vm.oWins         = [];
 
-    // Viewmodel Functions
+    // *************************** //
+    // *** Viewmodel Functions *** //
+    // *************************** //
+
     vm.getMove       = getMove;
     vm.changePage    = changePage;
 
@@ -46635,7 +46638,7 @@ return jQuery;
 
     // get player's move
     function getMove(tile, value, $event){
-      while(vm.playing){
+      while(vm.ongoingGame){
         var square = $event.currentTarget.classList;
         if (checkMove(square, tile)){
           if (vm.player === 'x'){
@@ -46645,17 +46648,17 @@ return jQuery;
           }
           square.add(vm.player);
           checkTileWin(tile);
+          getPlayer();
+          moveBoard($event.currentTarget);
         } else {
           return false;
         }
-        vm.turnCounter++;
-        getPlayer();
-        moveBoard($event.currentTarget);
       }
     }
 
     // get player
     function getPlayer(){
+      vm.turnCounter++;
       // If evens then x's turn, odds then o's turn
       if (vm.turnCounter % 2 === 0){
         vm.player = 'x';
@@ -46683,7 +46686,7 @@ return jQuery;
     function moveBoard(square){
       var tiles = document.getElementsByClassName("tile");
 
-      // Regex to find the square index
+      // Regex to find the square's index
       var regex = new RegExp("[0-9]");
       var squareIndex = parseInt(regex.exec(square.classList[1]));
 
@@ -46764,10 +46767,17 @@ return jQuery;
 
     // Checks for a game win
     function checkGameWin(array){
-      if (array.indexOf(0) !== -1 && array.indexOf(1) !== -1 && array.indexOf(2) !== -1){
-        vm.playing = false;
-      } else {
-        console.log("no beuno");
+      var winConditions = [[0,1,2],[3,4,5],[6,7,8],
+                           [0,3,6],[1,4,7],[2,5,8],
+                           [0,4,8],[2,4,6]];
+
+      for (var i = 0; i < winConditions.length; i++){
+        if (array.indexOf(winConditions[i][0]) !== -1 && array.indexOf(winConditions[i][1]) !== -1 && array.indexOf(winConditions[i][2]) !== -1){
+          vm.ongoingGame = false;
+          vm.winner = vm.player;
+        } else {
+          console.log("no beuno");
+        }
       }
     }
 
