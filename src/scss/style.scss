@@ -3,7 +3,6 @@
 @import "board";
 @import "tiles";
 @import "squares";
-@import "players";
 @import "rules";
 @import "buttons";
 
@@ -14,8 +13,6 @@
 }
 
 // Main Css
-
-
 body {
   font-family: 'Lato-Regular';
   background: white;

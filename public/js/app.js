@@ -46611,6 +46611,7 @@ return jQuery;
     vm.winConditions = [14,77,194, // Horizontals
                         66,93,126, // Verticals
                         83,107];   // Diagonals
+    vm.playing       = true;
 
     // Turn counter variables
     vm.turnCounter   = 0;
@@ -46621,11 +46622,12 @@ return jQuery;
     vm.oMoves        = [[],[],[],[],[],[],[],[],[]];
     vm.xTiles        = [];
     vm.oTiles        = [];
+    vm.xWins         = [];
+    vm.oWins         = [];
 
     // Viewmodel Functions
     vm.getMove       = getMove;
-    vm.homePage      = homePage;
-    vm.rulesPage     = rulesPage;
+    vm.changePage    = changePage;
 
     // ***************** //
     // *** Functions *** //
@@ -46633,27 +46635,23 @@ return jQuery;
 
     // get player's move
     function getMove(tile, value, $event){
-      var square = $event.currentTarget.classList;
-      if (vm.player === 'x'){
+      while(vm.playing){
+        var square = $event.currentTarget.classList;
         if (checkMove(square, tile)){
-          vm.xMoves[tile].push(value);
+          if (vm.player === 'x'){
+            vm.xMoves[tile].push(value);
+          } else {
+            vm.oMoves[tile].push(value);
+          }
           square.add(vm.player);
           checkTileWin(tile);
         } else {
           return false;
         }
-      } else {
-        if (checkMove(square, tile)){
-          vm.oMoves[tile].push(value);
-          square.add(vm.player);
-          checkTileWin(tile);
-        } else {
-          return false;
-        }
+        vm.turnCounter++;
+        getPlayer();
+        moveBoard($event.currentTarget);
       }
-      vm.turnCounter++;
-      getPlayer();
-      moveBoard($event.currentTarget);
     }
 
     // get player
@@ -46746,6 +46744,15 @@ return jQuery;
       var tile = document.getElementById("tile"+tileIndex);
       tile.classList.add(vm.player);
       setSquares(tile);
+
+      // Push tile index into the winner's array;
+      if (vm.player === "x"){
+        vm.xWins.push(tileIndex);
+        checkGameWin(vm.xWins);
+      } else {
+        vm.oWins.push(tileIndex);
+        checkGameWin(vm.oWins);
+      }
     }
     
     // Sets won squares to inactive
@@ -46755,18 +46762,23 @@ return jQuery;
       }
     }
 
+    // Checks for a game win
+    function checkGameWin(array){
+      if (array.indexOf(0) !== -1 && array.indexOf(1) !== -1 && array.indexOf(2) !== -1){
+        vm.playing = false;
+      } else {
+        console.log("no beuno");
+      }
+    }
+
     // Checks for a draw
 
     // Reset board
 
-    // Displays rules page
-    function rulesPage(){
-      $state.go("rules");
+    // Displays change page
+    function changePage(page){
+      $state.go(page);
     }
 
-    // Displays home page
-    function homePage(){
-      $state.go("home");
-    }
   }
 })();

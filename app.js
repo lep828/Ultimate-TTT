@@ -5,7 +5,7 @@ var app     = express();
 // Setting up static folders
 app.use("/", express.static(__dirname + "/public"));
 
-//
+// Directs all paths to index page
 app.get("/*", function(req, res){
   res.sendFile(__dirname + "/public/views/index.html");
 });

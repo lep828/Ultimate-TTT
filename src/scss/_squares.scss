@@ -36,4 +36,32 @@
     border-top: 1px solid $black;
     border-left: 1px solid $black;
   }
+
+  // Players CSS
+  &.x{
+    background-color: $red;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+
+    &:before{
+      content: "X"
+    }
+  }
+
+  &.o{
+    color: $white;
+    background-color: $blue;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column; 
+
+    &:before{
+      content: "O"
+    }
+  }
+
 }
