@@ -30,10 +30,14 @@
 
       &.active {
         background-color: $grey;
-        box-shadow: 2px 2px 1px 0 lighten($black, 30%);
+        -webkit-box-shadow: 2px 2px 1px 0 lighten($black, 30%);
+           -moz-box-shadow: 2px 2px 1px 0 lighten($black, 30%);
+                box-shadow: 2px 2px 1px 0 lighten($black, 30%);
       }
       &.inactive {
-        box-shadow: inset 2px 2px 1px 0 lighten($black, 30%) !important;
+        -webkit-box-shadow: inset 2px 2px 1px 0 lighten($black, 30%) !important;
+           -moz-box-shadow: inset 2px 2px 1px 0 lighten($black, 30%) !important;
+                box-shadow: inset 2px 2px 1px 0 lighten($black, 30%) !important;
       }
 
       &#tile1 {

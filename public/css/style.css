@@ -41,15 +41,21 @@ body main {
   height: 97%;
   background-color: rgba(189, 189, 189, 0.6);
   border: 3px solid #555555;
+  -webkit-box-shadow: inset 5px 5px 4px 0 #a2a2a2;
+  -moz-box-shadow: inset 5px 5px 4px 0 #a2a2a2;
   box-shadow: inset 5px 5px 4px 0 #a2a2a2;
 }
 
 .tile_wrapper .tile.active {
   background-color: rgba(240, 240, 240, 0.6);
+  -webkit-box-shadow: 5px 5px 4px 0 #a2a2a2;
+  -moz-box-shadow: 5px 5px 4px 0 #a2a2a2;
   box-shadow: 5px 5px 4px 0 #a2a2a2;
 }
 
 .tile_wrapper .tile.inactive {
+  -webkit-box-shadow: inset 5px 5px 4px 0 #a2a2a2 !important;
+  -moz-box-shadow: inset 5px 5px 4px 0 #a2a2a2 !important;
   box-shadow: inset 5px 5px 4px 0 #a2a2a2 !important;
 }
 
@@ -167,7 +173,11 @@ button {
   color: #f5f5f5;
   background-color: #6ec071;
   border: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   border-radius: 4px;
+  -webkit-box-shadow: 0 9px #6f6f6f;
+  -moz-box-shadow: 0 9px #6f6f6f;
   box-shadow: 0 9px #6f6f6f;
 }
 
@@ -177,8 +187,10 @@ button:hover {
 
 button:active {
   background-color: #4CAF50;
-  box-shadow: 0 5px #555555;
   transform: translateY(4px);
+  -webkit-box-shadow: 0 5px #555555;
+  -moz-box-shadow: 0 5px #555555;
+  box-shadow: 0 5px #555555;
 }
 
 /* Phones - Portrait and Landscape */
@@ -202,9 +214,13 @@ button:active {
   }
   .tile_wrapper .tile.active {
     background-color: rgba(240, 240, 240, 0.6);
+    -webkit-box-shadow: 2px 2px 1px 0 #a2a2a2;
+    -moz-box-shadow: 2px 2px 1px 0 #a2a2a2;
     box-shadow: 2px 2px 1px 0 #a2a2a2;
   }
   .tile_wrapper .tile.inactive {
+    -webkit-box-shadow: inset 2px 2px 1px 0 #a2a2a2 !important;
+    -moz-box-shadow: inset 2px 2px 1px 0 #a2a2a2 !important;
     box-shadow: inset 2px 2px 1px 0 #a2a2a2 !important;
   }
   .tile_wrapper .tile#tile1 {

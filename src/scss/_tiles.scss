@@ -10,14 +10,20 @@
     height: 97%;
     background-color: darken($grey, 20%);
     border: 3px solid $black;
-    box-shadow: inset 5px 5px 4px 0 lighten($black, 30%);
+    -webkit-box-shadow: inset 5px 5px 4px 0 lighten($black, 30%);
+       -moz-box-shadow: inset 5px 5px 4px 0 lighten($black, 30%);
+            box-shadow: inset 5px 5px 4px 0 lighten($black, 30%);
 
     &.active {
       background-color: $grey;
-      box-shadow: 5px 5px 4px 0 lighten($black, 30%);
+      -webkit-box-shadow: 5px 5px 4px 0 lighten($black, 30%);
+         -moz-box-shadow: 5px 5px 4px 0 lighten($black, 30%);
+              box-shadow: 5px 5px 4px 0 lighten($black, 30%);
     }
     &.inactive {
-      box-shadow: inset 5px 5px 4px 0 lighten($black, 30%) !important;
+      -webkit-box-shadow: inset 5px 5px 4px 0 lighten($black, 30%) !important;
+         -moz-box-shadow: inset 5px 5px 4px 0 lighten($black, 30%) !important;
+              box-shadow: inset 5px 5px 4px 0 lighten($black, 30%) !important;
     }
 
     &.x {

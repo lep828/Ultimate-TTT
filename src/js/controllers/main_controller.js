@@ -14,32 +14,30 @@
     // *** Global Variables *** //
     // ************************ //
 
-    function init(){
-      // Game Variables
-      vm.gameOngoing       = true;
-      vm.gameWon           = false;
-      vm.gameDrawn         = false;
-      vm.tiles             = [0,1,2,3,4,5,6,7,8];
-      vm.squares           = [[0,1],[1,4],[2,9],[3,16],[4,25],[5,36],[6,49],[7,64],[8,81]];
-      vm.tileWinConditions = [14,77,194, // Horizontals
-                              66,93,126, // Verticals
-                              83,107];   // Diagonals
-      vm.gameWinConditions = [[0,1,2],[3,4,5],[6,7,8], // Horizontals
-                              [0,3,6],[1,4,7],[2,5,8], // Verticals
-                              [0,4,8],[2,4,6]];        // Diagonals
+    // Game Variables
+    vm.gameOngoing       = true;
+    vm.gameWon           = false;
+    vm.gameDrawn         = false;
+    vm.tiles             = [0,1,2,3,4,5,6,7,8];
+    vm.squares           = [[0,1],[1,4],[2,9],[3,16],[4,25],[5,36],[6,49],[7,64],[8,81]];
+    vm.tileWinConditions = [14,77,194, // Horizontals
+                            66,93,126, // Verticals
+                            83,107];   // Diagonals
+    vm.gameWinConditions = [[0,1,2],[3,4,5],[6,7,8], // Horizontals
+                            [0,3,6],[1,4,7],[2,5,8], // Verticals
+                            [0,4,8],[2,4,6]];        // Diagonals
 
-      // Turn counter variables
-      vm.turnCounter       = 0;
-      vm.player            = "x";
+    // Turn counter variables
+    vm.turnCounter       = 0;
+    vm.player            = "x";
 
-      // Player Variables
-      vm.xMoves            = [[],[],[],[],[],[],[],[],[]];
-      vm.oMoves            = [[],[],[],[],[],[],[],[],[]];
-      vm.xTiles            = [];
-      vm.oTiles            = [];
-      vm.xWins             = [];
-      vm.oWins             = [];
-    }
+    // Player Variables
+    vm.xMoves            = [[],[],[],[],[],[],[],[],[]];
+    vm.oMoves            = [[],[],[],[],[],[],[],[],[]];
+    vm.xTiles            = [];
+    vm.oTiles            = [];
+    vm.xWins             = [];
+    vm.oWins             = [];
 
     // *************************** //
     // *** Viewmodel Functions *** //
@@ -143,7 +141,6 @@
 
             for (var l = 0; l < vm.tileWinConditions.length; l++){
               if (total === vm.tileWinConditions[l]){
-                console.log("WINNER", vm.player, total);
                 setTile(tile);
               }
             }
@@ -197,7 +194,6 @@
 
     // Checks for a draw
     function checkGameDraw(){
-      console.log("HEREEREER DRAW CHECKERSZZ");
       var total = vm.xWins.length + vm.oWins.length;
       if (total === 9 && vm.gameWon === false){
         vm.gameOngoing = false;
@@ -222,7 +218,18 @@
       }
 
       // Resets variables
-      init();
+      vm.gameOngoing = true;
+      vm.gameWon     = false;
+      vm.gameDrawn   = false;
+      vm.turnCounter = 0;
+      vm.player      = "x";
+      vm.xMoves      = [[],[],[],[],[],[],[],[],[]];
+      vm.oMoves      = [[],[],[],[],[],[],[],[],[]];
+      vm.xTiles      = [];
+      vm.oTiles      = [];
+      vm.xWins       = [];
+      vm.oWins       = [];
+
     }
 
     // Displays change page
@@ -230,6 +237,5 @@
       $state.go(page);
     }
 
-    init();
   }
 })();
