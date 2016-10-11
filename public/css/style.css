@@ -1,6 +1,7 @@
 #board_container {
   position: relative;
-  width: 90%;
+  width: 60%;
+  min-width: 720px;
   margin: 0 auto;
 }
 
