@@ -46605,25 +46605,29 @@ return jQuery;
     // *** Global Variables *** //
     // ************************ //
 
-    // Game Variables
-    vm.ongoingGame   = true;
-    vm.tiles         = [0,1,2,3,4,5,6,7,8];
-    vm.squares       = [[0,1],[1,4],[2,9],[3,16],[4,25],[5,36],[6,49],[7,64],[8,81]];
-    vm.winConditions = [14,77,194, // Horizontals
-                        66,93,126, // Verticals
-                        83,107];   // Diagonals
+    function init(){
 
-    // Turn counter variables
-    vm.turnCounter   = 0;
-    vm.player        = "x";
+      // Game Variables
+      vm.ongoingGame   = true;
+      vm.tiles         = [0,1,2,3,4,5,6,7,8];
+      vm.squares       = [[0,1],[1,4],[2,9],[3,16],[4,25],[5,36],[6,49],[7,64],[8,81]];
+      vm.winConditions = [14,77,194, // Horizontals
+                          66,93,126, // Verticals
+                          83,107];   // Diagonals
 
-    // Player Variables
-    vm.xMoves        = [[],[],[],[],[],[],[],[],[]];
-    vm.oMoves        = [[],[],[],[],[],[],[],[],[]];
-    vm.xTiles        = [];
-    vm.oTiles        = [];
-    vm.xWins         = [];
-    vm.oWins         = [];
+      // Turn counter variables
+      vm.turnCounter   = 0;
+      vm.player        = "x";
+
+      // Player Variables
+      vm.xMoves        = [[],[],[],[],[],[],[],[],[]];
+      vm.oMoves        = [[],[],[],[],[],[],[],[],[]];
+      vm.xTiles        = [];
+      vm.oTiles        = [];
+      vm.xWins         = [];
+      vm.oWins         = [];
+
+    }
 
     // *************************** //
     // *** Viewmodel Functions *** //
@@ -46631,6 +46635,7 @@ return jQuery;
 
     vm.getMove       = getMove;
     vm.changePage    = changePage;
+    vm.resetGame     = resetGame;
 
     // ***************** //
     // *** Functions *** //
@@ -46775,20 +46780,37 @@ return jQuery;
         if (array.indexOf(winConditions[i][0]) !== -1 && array.indexOf(winConditions[i][1]) !== -1 && array.indexOf(winConditions[i][2]) !== -1){
           vm.ongoingGame = false;
           vm.winner = vm.player;
-        } else {
-          console.log("no beuno");
         }
       }
     }
 
     // Checks for a draw
 
-    // Reset board
+    // Reset game
+    function resetGame(){
+      var squares = document.getElementsByClassName("square");
+      var tiles   = document.getElementsByClassName("tile");
+
+      // Resets squares
+      for (var i = 0; i < squares.length; i++){
+        squares[i].classList.remove("x", "o", "inactive");
+      }
+
+      // Resets tiles
+      for (var j = 0; j < tiles.length; j++){
+        tiles[j].classList.remove("x", "o");
+        tiles[j].classList.add("active");
+      }
+
+      // Resets variables
+      init();
+    }
 
     // Displays change page
     function changePage(page){
       $state.go(page);
     }
 
+    init();
   }
 })();
