@@ -1,0 +1,107 @@
+/* Phones - Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+
+  // Site Responsive Css
+  h1 {
+    margin: 0.5em 0;
+    font-size: 1.5em;
+  }
+
+  // Board Responsive Css
+  #board_container {
+    width: 100%;
+    min-width: 0px;
+
+    #board {
+      height: 300px;
+    }
+  }
+
+  // Tiles Responsive Css
+  .tile_wrapper {
+    .tile {
+      position: relative;
+      height: 98%;
+      background-color: darken($grey, 20%);
+      border: 2px solid $black;
+
+      &.active {
+        background-color: $grey;
+        box-shadow: 2px 2px 1px 0 lighten($black, 30%);
+      }
+      &.inactive {
+        box-shadow: inset 2px 2px 1px 0 lighten($black, 30%) !important;
+      }
+
+      &#tile1 {
+        border-left: 0;
+        border-right: 0;
+      }
+      &#tile4 {
+        border-left: 0;
+        border-right: 0;
+      }
+      &#tile7 {
+        border-left: 0;
+        border-right: 0;
+      }
+    }
+  }
+
+  // Squares Responsive Css
+  .square {
+    width: 32.5%;
+    &.square0 {
+      border-right: 0.5px solid $black;
+      border-bottom: 0.5px solid $black;
+    } 
+    &.square1 {
+      border-bottom: 0.5px solid $black;
+    }
+    &.square2 {
+      border-left: 0.5px solid $black;
+      border-bottom: 0.5px solid $black;
+    }
+    &.square3 {
+      border-right: 0.5px solid $black;
+    }
+    &.square4 {
+    }
+    &.square5 {
+      border-left: 0.5px solid $black;
+    }
+    &.square6 {
+      border-top: 0.5px solid $black;
+      border-right: 0.5px solid $black;
+    }
+    &.square7 {
+      border-top: 0.5px solid $black;
+    }
+    &.square8 {
+      border-top: 0.5px solid $black;
+      border-left: 0.5px solid $black;
+    }
+  } 
+
+  // Rules Page Responsive CSS
+  #rules {
+    width: 95%;
+    margin: 0 auto;
+    
+    img {
+      display: inline-block;
+      height: auto;
+      width: 45%;
+      padding: 2%;
+    }
+  }
+
+  // Button Responsive CSS
+  button {
+    margin: 0.5em;
+  }
+
+}

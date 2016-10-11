@@ -1,18 +1,10 @@
-// Imports
-@import "variables";
-@import "board";
-@import "tiles";
-@import "squares";
-@import "rules";
-@import "buttons";
-
 // Font
 @font-face {
   font-family: 'Lato-Regular';
   src: url("/fonts/Lato-Regular.ttf");
 }
 
-// Main Css
+// Site Css
 body {
   font-family: 'Lato-Regular';
   background: white;
@@ -26,3 +18,12 @@ body {
     text-align: center;
   }
 }
+
+// Imports
+@import "variables";
+@import "board";
+@import "tiles";
+@import "squares";
+@import "rules";
+@import "buttons";
+@import "responsive";

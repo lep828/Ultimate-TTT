@@ -13,4 +13,4 @@
 </div>
 
 <button ng-click="main.changePage('rules')">Rules</button>
-<button ng-click="main.resetGame()">Reset</button>
+<button ng-hide="main.gameOngoing" ng-click="main.resetGame()">Reset</button>

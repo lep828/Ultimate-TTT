@@ -1,65 +1,61 @@
 // Squares CSS
-.square{
+.square {
   position: relative;
   width: 33%;
   height: 33%;
   float: left;
 
-  &.square0{
-    border-right: 1px solid $black;
-    border-bottom: 1px solid $black;
-  }
-  &.square1{
-    border-bottom: 1px solid $black;
-  }
-  &.square2{
-    border-left: 1px solid $black;
-    border-bottom: 1px solid $black;
-  }
-  &.square3{
-    border-right: 1px solid $black;
-  }
-  &.square4{
+  color: $white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 
+
+  &.square0 {
+    border-right: 1px solid $black;
+    border-bottom: 1px solid $black;
+  } 
+  &.square1 {
+    border-bottom: 1px solid $black;
   }
-  &.square5{
+  &.square2 {
+    border-left: 1px solid $black;
+    border-bottom: 1px solid $black;
+  }
+  &.square3 {
+    border-right: 1px solid $black;
+  }
+  &.square4 {
+  }
+  &.square5 {
     border-left: 1px solid $black;
   }
-  &.square6{
+  &.square6 {
     border-top: 1px solid $black;
     border-right: 1px solid $black;
   }
-  &.square7{
+  &.square7 {
     border-top: 1px solid $black;
   }
-  &.square8{
+  &.square8 {
     border-top: 1px solid $black;
     border-left: 1px solid $black;
   }
 
   // Players CSS
-  &.x{
+  &.x {
     background-color: $red;
-    color: $white;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
 
-    &:before{
+    &:before {
       content: "X"
     }
   }
 
-  &.o{
-    color: $white;
+  &.o {
     background-color: $blue;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column; 
 
-    &:before{
+    &:before {
       content: "O"
     }
   }
