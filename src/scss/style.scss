@@ -1,3 +1,13 @@
+// Imports
+@import "variables";
+@import "header";
+@import "board";
+@import "tiles";
+@import "squares";
+@import "rules";
+@import "buttons";
+@import "responsive";
+
 // Font
 @font-face {
   font-family: 'Lato-Regular';
@@ -8,22 +18,9 @@
 body {
   font-family: 'Lato-Regular';
   background: white;
-
-  header {
-    h1 {
-      text-align: center;
-    }
-  }
+  margin: 0;
+  
   main {
     text-align: center;
   }
 }
-
-// Imports
-@import "variables";
-@import "board";
-@import "tiles";
-@import "squares";
-@import "rules";
-@import "buttons";
-@import "responsive";

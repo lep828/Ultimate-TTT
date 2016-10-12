@@ -15,6 +15,8 @@
     // ************************ //
 
     // Game Variables
+    vm.home              = true;
+    vm.rules             = false;
     vm.gameOngoing       = true;
     vm.gameWon           = false;
     vm.gameDrawn         = false;
@@ -234,6 +236,13 @@
 
     // Displays change page
     function changePage(page){
+      if (page === "home") {
+        vm.home  = true;
+        vm.rules = false;
+      } else {
+        vm.home  = false;
+        vm.rules = true;
+      }
       $state.go(page);
     }
 

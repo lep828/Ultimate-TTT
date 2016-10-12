@@ -4,13 +4,20 @@
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2) { 
 
-  // Site Responsive Css
+  // Site Responsive CSS
   h1 {
     margin: 0.5em 0;
     font-size: 1.5em;
   }
 
-  // Board Responsive Css
+  // Header Responsive CSS
+  header {
+    nav {
+      font-size: 1.2em;
+    }
+  }
+
+  // Board Responsive CSS
   #board_container {
     width: 100%;
     min-width: 0px;
@@ -20,7 +27,7 @@
     }
   }
 
-  // Tiles Responsive Css
+  // Tiles Responsive CSS
   .tile_wrapper {
     .tile {
       position: relative;
@@ -55,7 +62,7 @@
     }
   }
 
-  // Squares Responsive Css
+  // Squares Responsive CSS
   .square {
     width: 32.5%;
     &.square0 {

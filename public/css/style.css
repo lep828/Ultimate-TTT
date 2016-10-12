@@ -1,19 +1,21 @@
-@font-face {
-  font-family: 'Lato-Regular';
-  src: url("/fonts/Lato-Regular.ttf");
-}
-
-body {
-  font-family: 'Lato-Regular';
-  background: white;
-}
-
-body header h1 {
+header nav {
+  background-color: #555555;
+  color: #f5f5f5;
+  width: 100%;
+  display: inline-block;
+  font-size: 2em;
+  position: relative;
   text-align: center;
+  padding: 0.5em 0px;
 }
 
-body main {
-  text-align: center;
+header nav .nav_right {
+  position: absolute;
+  right: 2%;
+  text-decoration: none;
+  cursor: default;
+  outline: none;
+  color: #f5f5f5;
 }
 
 #board_container {
@@ -199,6 +201,9 @@ button:active {
     margin: 0.5em 0;
     font-size: 1.5em;
   }
+  header nav {
+    font-size: 1.2em;
+  }
   #board_container {
     width: 100%;
     min-width: 0px;
@@ -279,4 +284,19 @@ button:active {
   button {
     margin: 0.5em;
   }
+}
+
+@font-face {
+  font-family: 'Lato-Regular';
+  src: url("/fonts/Lato-Regular.ttf");
+}
+
+body {
+  font-family: 'Lato-Regular';
+  background: white;
+  margin: 0;
+}
+
+body main {
+  text-align: center;
 }

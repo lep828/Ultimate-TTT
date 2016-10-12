@@ -10,7 +10,11 @@
 </head>
 <body ng-controller="MainController as main">
   <header>
-    <h1>Ultimate Tic Tac Toe</h1>
+    <nav>
+      <span class="nav_center">Ultimate Tic Tac Toe</span>
+      <a href="/rules" class="nav_right" ng-show="main.home" ng-click="main.changePage('rules')">Rules</a>
+      <a href="/home" class="nav_right" ng-show="main.rules" ng-click="main.changePage('home')">Play</a>
+    </nav>
   </header>
   <main>
     <div ui-view></div>
