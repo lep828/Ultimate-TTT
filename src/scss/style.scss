@@ -1,5 +1,6 @@
 // Imports
 @import "variables";
+@import "mixins";
 @import "header";
 @import "board";
 @import "tiles";
@@ -14,12 +15,12 @@
   src: url("/fonts/Lato-Regular.ttf");
 }
 
-// Site Css
+// Site CSS
 body {
   font-family: 'Lato-Regular';
   background: white;
   margin: 0;
-  
+
   main {
     text-align: center;
   }

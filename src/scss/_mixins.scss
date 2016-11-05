@@ -1,0 +1,14 @@
+// Mixins
+@mixin box-shadow($a, $b, $c, $d, $colour, $percent) {
+  -webkit-box-shadow: $a $b $c $d lighten($colour, $percent);
+     -moz-box-shadow: $a $b $c $d lighten($colour, $percent);
+      -ms-box-shadow: $a $b $c $d lighten($colour, $percent);
+          box-shadow: $a $b $c $d lighten($colour, $percent);
+}
+
+@mixin box-shadow-inset($a, $b, $c, $d, $colour, $percent) {
+  -webkit-box-shadow: inset $a $b $c $d lighten($colour, $percent);
+     -moz-box-shadow: inset $a $b $c $d lighten($colour, $percent);
+      -ms-box-shadow: inset $a $b $c $d lighten($colour, $percent);
+          box-shadow: inset $a $b $c $d lighten($colour, $percent);
+}

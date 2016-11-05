@@ -45,6 +45,7 @@ header nav .nav_right {
   border: 3px solid #555555;
   -webkit-box-shadow: inset 5px 5px 4px 0 #a2a2a2;
   -moz-box-shadow: inset 5px 5px 4px 0 #a2a2a2;
+  -ms-box-shadow: inset 5px 5px 4px 0 #a2a2a2;
   box-shadow: inset 5px 5px 4px 0 #a2a2a2;
 }
 
@@ -52,13 +53,15 @@ header nav .nav_right {
   background-color: rgba(240, 240, 240, 0.6);
   -webkit-box-shadow: 5px 5px 4px 0 #a2a2a2;
   -moz-box-shadow: 5px 5px 4px 0 #a2a2a2;
+  -ms-box-shadow: 5px 5px 4px 0 #a2a2a2;
   box-shadow: 5px 5px 4px 0 #a2a2a2;
 }
 
 .tile_wrapper .tile.inactive {
-  -webkit-box-shadow: inset 5px 5px 4px 0 #a2a2a2 !important;
-  -moz-box-shadow: inset 5px 5px 4px 0 #a2a2a2 !important;
-  box-shadow: inset 5px 5px 4px 0 #a2a2a2 !important;
+  -webkit-box-shadow: inset 5px 5px 4px 0 #a2a2a2;
+  -moz-box-shadow: inset 5px 5px 4px 0 #a2a2a2;
+  -ms-box-shadow: inset 5px 5px 4px 0 #a2a2a2;
+  box-shadow: inset 5px 5px 4px 0 #a2a2a2;
 }
 
 .tile_wrapper .tile.x {
@@ -221,12 +224,14 @@ button:active {
     background-color: rgba(240, 240, 240, 0.6);
     -webkit-box-shadow: 2px 2px 1px 0 #a2a2a2;
     -moz-box-shadow: 2px 2px 1px 0 #a2a2a2;
+    -ms-box-shadow: 2px 2px 1px 0 #a2a2a2;
     box-shadow: 2px 2px 1px 0 #a2a2a2;
   }
   .tile_wrapper .tile.inactive {
-    -webkit-box-shadow: inset 2px 2px 1px 0 #a2a2a2 !important;
-    -moz-box-shadow: inset 2px 2px 1px 0 #a2a2a2 !important;
-    box-shadow: inset 2px 2px 1px 0 #a2a2a2 !important;
+    -webkit-box-shadow: inset 2px 2px 1px 0 #a2a2a2;
+    -moz-box-shadow: inset 2px 2px 1px 0 #a2a2a2;
+    -ms-box-shadow: inset 2px 2px 1px 0 #a2a2a2;
+    box-shadow: inset 2px 2px 1px 0 #a2a2a2;
   }
   .tile_wrapper .tile#tile1 {
     border-left: 0;

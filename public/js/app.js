@@ -46664,7 +46664,7 @@ return jQuery;
       }
     }
 
-    // get player
+    // check whose turn it is
     function getPlayer(){
       vm.turnCounter++;
       // If evens then x's turn, odds then o's turn
@@ -46677,7 +46677,7 @@ return jQuery;
 
     // Checks if move is valid
     function checkMove(square, tile){
-      // Checks if the tile is active || if the square is inactive
+      // Checks if the tile is active or if the square is inactive
       if (checkTile(tile) || square.value.indexOf("inactive") !== -1){
         return false;
       }
@@ -46794,7 +46794,7 @@ return jQuery;
       }
     }
 
-    // Reset game
+    // Resets game
     function resetGame(){
       var squares = document.getElementsByClassName("square");
       var tiles   = document.getElementsByClassName("tile");
@@ -46822,10 +46822,9 @@ return jQuery;
       vm.oTiles      = [];
       vm.xWins       = [];
       vm.oWins       = [];
-
     }
 
-    // Displays change page
+    // changes page
     function changePage(page){
       if (page === "home") {
         vm.home  = true;
