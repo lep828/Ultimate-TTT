@@ -8,7 +8,7 @@
   MainController.$inject = ["$state"];
   function MainController($state){
     // namespacing 'this'
-    var vm = this;
+    const vm = this;
 
     // ************************ //
     // *** Global Variables *** //
@@ -56,7 +56,7 @@
     // get player's move
     function getMove(tile, value, $event){
       while(vm.gameOngoing){
-        var square = $event.currentTarget.classList;
+        const square = $event.currentTarget.classList;
         if (checkMove(square, tile)){
           if (vm.player === 'x'){
             vm.xMoves[tile].push(value);
@@ -66,7 +66,7 @@
           square.add(vm.player);
           checkTileWin(tile);
           getPlayer();
-          moveBoard($event.currentTarget);
+          moveBoard(square);
         } else {
           return false;
         }
@@ -87,9 +87,7 @@
     // Checks if move is valid
     function checkMove(square, tile){
       // Checks if the tile is active or if the square is inactive
-      if (checkTile(tile) || square.value.indexOf("inactive") !== -1){
-        return false;
-      }
+      if (checkTile(tile) || square.value.indexOf("inactive") !== -1) return false;
       
       // Checks if the square has been taken already
       if(square.value.indexOf("x") === -1 && square.value.indexOf("o") === -1){
@@ -101,11 +99,11 @@
 
     // move board to the corresponding tile
     function moveBoard(square){
-      var tiles = document.getElementsByClassName("tile");
+      const tiles = document.getElementsByClassName("tile");
 
       // Regex to find the square's index
-      var regex = new RegExp("[0-9]");
-      var squareIndex = parseInt(regex.exec(square.classList[1]));
+      const regex = new RegExp("[0-9]");
+      const squareIndex = parseInt(regex.exec(square[1]));
 
       // Checks if the corresponding tile has been won
       if (tiles[squareIndex].classList[1] !== "x" && tiles[squareIndex].classList[1] !== "o"){
@@ -124,14 +122,8 @@
 
     // Checks for a tile win
     function checkTileWin(tile){
-      var total = 0;
-      var array = [];
-
-      if (vm.player === 'x'){
-        array = vm.xMoves[tile];
-      } else {
-        array = vm.oMoves[tile];
-      }
+      let total = 0;
+      let array = vm.player === 'x' ? vm.xMoves[tile] : vm.oMoves[tile];
 
       // Loops to add all possible combinations together to check for wins
       for (let i = 0; i < array.length; i++){
@@ -153,14 +145,14 @@
 
     // Checks if the tile is active
     function checkTile(tileIndex){
-      var tiles = document.getElementsByClassName("tile");
-      var tile  = tiles[tileIndex].classList; 
+      const tiles = document.getElementsByClassName("tile");
+      const tile  = tiles[tileIndex].classList; 
       return tile[1] !== "active" ? true : false;
     }
 
     // Sets tile to the winner
     function setTile(tileIndex){
-      var tile = document.getElementById("tile"+tileIndex);
+      const tile = document.getElementById("tile"+tileIndex);
       tile.classList.add(vm.player);
       setSquares(tile);
 
@@ -196,7 +188,7 @@
 
     // Checks for a draw
     function checkGameDraw(){
-      var total = vm.xWins.length + vm.oWins.length;
+      const total = vm.xWins.length + vm.oWins.length;
       if (total === 9 && vm.gameWon === false){
         vm.gameOngoing = false;
         vm.gameDrawn   = true;
@@ -205,8 +197,8 @@
 
     // Resets game
     function resetGame(){
-      var squares = document.getElementsByClassName("square");
-      var tiles   = document.getElementsByClassName("tile");
+      const squares = document.getElementsByClassName("square");
+      const tiles   = document.getElementsByClassName("tile");
 
       // Resets squares
       for (let i = 0; i < squares.length; i++){
