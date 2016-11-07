@@ -46700,14 +46700,14 @@ return jQuery;
 
       // Checks if the corresponding tile has been won
       if (tiles[squareIndex].classList[1] !== "x" && tiles[squareIndex].classList[1] !== "o"){
-        for (var i = 0; i < tiles.length; i++){
+        for (let i = 0; i < tiles.length; i++){
           tiles[i].classList.remove("active");
         }
         tiles[squareIndex].classList.add("active");
       } else {
         // If tile has been won, allow any other tile to be clicked
-        for (var j = 0; j < tiles.length; j++){
-          tiles[j].classList.add("active");
+        for (let i = 0; i < tiles.length; i++){
+          tiles[i].classList.add("active");
         }
         tiles[squareIndex].classList.remove("active");
       }
@@ -46725,14 +46725,14 @@ return jQuery;
       }
 
       // Loops to add all possible combinations together to check for wins
-      for (var i = 0; i < array.length; i++){
+      for (let i = 0; i < array.length; i++){
         total = array[i];
-        for (var j = i+1; j < array.length; j++){
+        for (let j = i+1; j < array.length; j++){
           total = array[i] + array[j];
-          for (var k = j+1; k < array.length; k++){
+          for (let k = j+1; k < array.length; k++){
             total += array[k];
 
-            for (var l = 0; l < vm.tileWinConditions.length; l++){
+            for (let l = 0; l < vm.tileWinConditions.length; l++){
               if (total === vm.tileWinConditions[l]){
                 setTile(tile);
               }
@@ -46767,14 +46767,14 @@ return jQuery;
     
     // Sets won squares to inactive
     function setSquares(tile){
-      for (var i = 0; i < vm.squares.length; i++){
+      for (let i = 0; i < vm.squares.length; i++){
         document.getElementById(tile.id + "square" + vm.squares[i][0]).classList.add("inactive");
       }
     }
 
     // Checks for a game win
     function checkGameWin(array){
-      for (var i = 0; i < vm.gameWinConditions.length; i++){
+      for (let i = 0; i < vm.gameWinConditions.length; i++){
         if (array.indexOf(vm.gameWinConditions[i][0]) !== -1 && array.indexOf(vm.gameWinConditions[i][1]) !== -1 && array.indexOf(vm.gameWinConditions[i][2]) !== -1){
           vm.gameOngoing = false;
           vm.gameWon     = true;
@@ -46800,14 +46800,14 @@ return jQuery;
       var tiles   = document.getElementsByClassName("tile");
 
       // Resets squares
-      for (var i = 0; i < squares.length; i++){
+      for (let i = 0; i < squares.length; i++){
         squares[i].classList.remove("x", "o", "inactive");
       }
 
       // Resets tiles
-      for (var j = 0; j < tiles.length; j++){
-        tiles[j].classList.remove("x", "o");
-        tiles[j].classList.add("active");
+      for (let i = 0; i < tiles.length; i++){
+        tiles[i].classList.remove("x", "o");
+        tiles[i].classList.add("active");
       }
 
       // Resets variables

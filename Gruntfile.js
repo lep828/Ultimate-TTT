@@ -2,6 +2,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
+      options: {
+        esversion: 6
+      },
       src: [
         'src/js/**/*.js',
         '!src/js/_bower.js'
