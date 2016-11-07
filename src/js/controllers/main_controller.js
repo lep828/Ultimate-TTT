@@ -88,13 +88,9 @@
     function checkMove(square, tile){
       // Checks if the tile is active or if the square is inactive
       if (checkTile(tile) || square.value.indexOf("inactive") !== -1) return false;
-      
+
       // Checks if the square has been taken already
-      if(square.value.indexOf("x") === -1 && square.value.indexOf("o") === -1){
-        return true;
-      } else {
-        return false;
-      }
+      return square.contains("x") || square.contains("o") ? false : true;
     }
 
     // move board to the corresponding tile
@@ -122,8 +118,8 @@
 
     // Checks for a tile win
     function checkTileWin(tile){
+      const array = vm.player === 'x' ? vm.xMoves[tile] : vm.oMoves[tile];
       let total = 0;
-      let array = vm.player === 'x' ? vm.xMoves[tile] : vm.oMoves[tile];
 
       // Loops to add all possible combinations together to check for wins
       for (let i = 0; i < array.length; i++){
@@ -157,13 +153,14 @@
       setSquares(tile);
 
       // Push tile index into the winner's array;
-      if (vm.player === "x"){
-        vm.xWins.push(tileIndex);
-        checkGameWin(vm.xWins);
-      } else {
-        vm.oWins.push(tileIndex);
-        checkGameWin(vm.oWins);
-      }
+
+      return vm.player === "x" ? (
+        vm.xWins.push(tileIndex),
+        checkGameWin(vm.xWins)
+      ) : (
+        vm.oWins.push(tileIndex),
+        checkGameWin(vm.oWins)
+      );
     }
     
     // Sets won squares to inactive
